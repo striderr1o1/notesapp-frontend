@@ -1,0 +1,104 @@
+.herosection {
+    position: relative;
+    min-height: 80vh; /* Allow it to grow if content needs more space */
+    width: auto;
+    display: flex;
+    flex-direction: column; /* Mobile first: vertical stack */
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem; /* Reduced padding for mobile */
+    overflow: visible;
+    gap: 1.5rem; /* Reduced gap for mobile */
+    z-index: 0;
+}
+
+.herosection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('src/assets/rocketpaper.png');
+    background-position: center;
+    background-size: cover;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.text-section h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem; /* Smaller font on mobile */
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+    padding: 0 10px; /* Reduced side padding */
+}
+
+.text-section p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem; /* Smaller text on mobile */
+    color: #636e72;
+    max-width: 95%;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 250px; /* Smaller image on mobile */
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.image-section img:hover {
+    transform: translateY(-10px);
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .herosection {
+        flex-direction: row; /* Horizontal layout on desktop */
+        padding: 4rem;
+        gap: 3rem;
+    }
+
+    .text-section h2 {
+        font-size: 2.2rem; /* Larger font on desktop */
+        margin-bottom: 1rem;
+        padding: 10px;
+    }
+
+    .text-section p {
+        font-size: 1.1rem;
+        max-width: 80%;
+        padding: 10px;
+    }
+
+    .image-section img {
+        max-width: 450px; /* Larger image on desktop */
+    }
+
+    /* Symmetric alignment: Text points towards the center image */
+    .herosection > :first-child {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .herosection > :last-child {
+        align-items: flex-start;
+        text-align: left;
+    }
+}
