@@ -1,0 +1,52 @@
+.parentt-div{
+    height: 100vh;
+    width: auto;
+    background-color: rgb(206, 202, 202);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+#login-form{
+    color: black;
+    height: auto;
+    margin-top: 150px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.labelParas{
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.login-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#login-submit {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(105, 105, 105);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#login-submit:hover {
+    background-color: #000000;
+}

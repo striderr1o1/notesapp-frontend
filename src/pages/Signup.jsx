@@ -70,7 +70,7 @@ async function SendData(e){
                       onChange={e=>{setEmail(e.target.value); setError('')}}></input>
                     </label>
                     <button  id="submitbutton" type="submit">submit</button>
-            {error && <p>{error}</p>}
+            {error && <p className="error-p">{error}</p>}
                 </div>
 
             </form>
