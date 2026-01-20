@@ -3,24 +3,65 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('')
-const [error, setError] = useState('')
-
 function Login(){
-//write function
+    
+    const [username, setUsername] = useState('');
+    const [error, setError] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
+
+    //write function
+    async function SendData(e){
+        e.preventDefault()
+        console.log(username)
+        console.log(password)
+        let data = {
+            username: username,
+            password: password
+        }
+
+        let response = await fetch('http://127.0.0.1:8000/login',{
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            },
+            credentials: "include",
+            body: JSON.stringify(data)
+        })
+        if (!response){
+            setError('Error in Logging in');
+            return;
+        }
+        if(response.status == 200){
+            alert("Logged in")
+            navigate('/')
+        }
+        if(response.status == 401 || response.status != 200){
+            setError('Error in Logging in');
+            return;
+        }
+
+    }
+
     return (
         <>
         <div className="parentt-div">
-            <form action="" id="login-form">
+            <form onSubmit={SendData}  action="" id="login-form">
                 <h1>Login</h1>
                 <p className="labelParas">username</p>
-                <input type="text" className="login-input" />
+                <input onChange={(e)=>{
+                    setUsername(e.target.value);
+                    setError('');
+                }} type="text" className="login-input" />
                 
                 <p className="labelParas">password</p>
-                <input type="password" className="login-input" />
+                <input onChange={(e)=>{
+                    setPassword(e.target.value)
+                    setError('');
+                }} type="password" className="login-input" />
 
                 <button type="submit" id="login-submit">Login</button>
+                {error && <p className="error-p">{error}</p>}
             </form>
         </div>
         </>
