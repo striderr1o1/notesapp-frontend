@@ -40,7 +40,7 @@ async function SendData(e){
             }
             setError('')
             alert("Account made");
-            navigate('/')
+            navigate('/login')
             
         }
         ).catch(err=>{

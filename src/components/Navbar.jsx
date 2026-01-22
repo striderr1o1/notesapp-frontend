@@ -1,22 +1,29 @@
 import "../styles/navbar.css"
 import { Link } from "react-router-dom";
-function Navbar(){
+function Navbar({logopath, aLinks = [], routerLinks = []}){
 
 	return (
 	<>
        <header>
 		<nav id="navbar">
 		<div className="logo-div">
-			<img src="src/assets/logo.png" alt="" />
+			<img src={logopath} alt="" />
 		</div>
 		<div className="links-div">
-			<a className="links" href="/">Home</a>
-			<a className="links" href="">About</a>
-			<a className="links" href="">Contact Us</a>
+			{
+			aLinks.map((link)=>(
+				<a key={link.name} className="links" href={link.href}>{link.name}</a>
+			))
+			}
+
 		</div>
 		<div className="authlinks">
-			<Link className="links" to="/signup">Signup</Link>
-			<Link className="links" to="/login">Login</Link>
+			{
+			routerLinks.map((link)=>(
+				<Link key={link.name} className="links" to={link.to}>{link.name}</Link>
+			))
+			}
+			
 		</div>
 	</nav>
 

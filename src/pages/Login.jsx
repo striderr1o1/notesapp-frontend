@@ -34,7 +34,8 @@ function Login(){
         }
         if(response.status == 200){
             alert("Logged in")
-            navigate('/')
+	    console.log(response);
+            navigate('/dashboard')
         }
         if(response.status == 401 || response.status != 200){
             setError('Error in Logging in');
