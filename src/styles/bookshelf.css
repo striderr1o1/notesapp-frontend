@@ -1,0 +1,61 @@
+
+
+.bookshelf {
+
+    /* Align with grid cell 2 */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 100%;
+    height: 700px;
+    display: grid;
+    grid-template: 60% 40% / 60% 40%;
+    
+}
+
+
+.notebooks-shelf{
+    grid-area: 1/1/2/2;
+    background-color: rgb(50, 50, 50);
+    margin: 10px 10px 10px 10px;
+    border-radius: 20px;
+    transition: 0.3 ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: sans-serif;
+    
+    
+} 
+.notebooks-shelf:hover{
+    border: 4px solid black;
+    transition: 0.3 ease;
+}
+.name-area{
+   height: 5%;
+    padding-left: 40px;
+    display: block;
+    width: 100%;
+    color: white;
+    background-color: transparent;
+    text-align: left;
+}
+.notebooks-space{
+    
+    height: 95%;
+    /* min-width: 200px; */
+    width: 100%;
+    overflow-x: scroll;
+    background-color: transparent;           
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.notebook{
+    margin: 0 10px 0 10px;
+    height: 80%;
+    min-width: 200px;
+}
+

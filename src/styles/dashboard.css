@@ -1,0 +1,12 @@
+.main {
+    display: grid;
+    grid-template-columns: 5% 95%;
+    grid-template-rows: 1fr;
+    width: 100%;
+    
+    /* z-index: 1; */
+    /* position: relative; */
+    /* Context for z-index if needed */
+}
+
+

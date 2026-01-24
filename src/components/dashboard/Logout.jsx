@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import logout from "../../api/auth"
+
  function Logout(){
     
     const navigate = useNavigate()

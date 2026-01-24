@@ -1,5 +1,14 @@
 
 .sidebar-nav{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    position: absolute;
+    /* Allow it to fill the cell initially */
+    width: 100%;
+    /* Ensure high z-index so it overlaps bookshelf when expanded */
+    z-index: 1000;
     min-height: 85vh;
     width: 50px;
     background-color: rgb(181, 181, 181);
