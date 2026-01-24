@@ -2,17 +2,29 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import logout from "../../api/auth"
  function Logout(){
+    
     const navigate = useNavigate()
-    useEffect(async ()=>{
-        const status = await logout();
-        if (status != 200){
-            alert("Error in Logging out");
-            navigate("/dashboard");
-        }
-        if (status == 200){
-            alert("Logging out");
-            navigate("/");
-        }
+    useEffect( ()=>{
+       async function logout(){
+                fetch('http://127.0.0.1:8000/logout', {
+                    method: "GET",
+                    credentials: "include"
+                })
+                .then((response)=>{
+                    console.log(response)
+                    if(response.status == 200){
+                        navigate("/")
+                        return
+                    }
+                    navigate("/dashboard")
+                })
+                .catch(err=>{
+                    console.log("Error: " + err);
+                    navigate("/")
+                })   
+}
+logout();
+        
     })
     return null
 }
