@@ -1,8 +1,30 @@
 import "../../styles/sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
+import { useState } from "react"
+import NotebookForm from "./NotebookForm"
+function Sidebar({HandleNotebookRequest, books}){
 
-function Sidebar(){
+    const [notebookForm, SetnotebookForm] = useState(false);
+    const [hoverOnNotebooks, SetHover] = useState(false)
+    function ShowForm(){
+        SetnotebookForm(true);
+
+    }
+
+    function HideForm(){
+        SetnotebookForm(false);
+    }
+
+    function setNotebookHover(){
+        SetHover(true)
+    }
+
+    function UnsetNotebookHover(){
+        SetHover(false)
+    }
+
+
     return(
         <>
         
@@ -16,12 +38,17 @@ function Sidebar(){
                     <FontAwesomeIcon className="font-book" icon={faBook} />
                   </div>
                   <div className="nb-heading">Notebooks</div>
-                  <div className="nbs-render-div">
+                  <div onMouseOver={setNotebookHover} onMouseOut={UnsetNotebookHover} className="notebook-render-div">
+                    {hoverOnNotebooks && books.map((book)=>(
+                        <div className="booknames" key={book._id}>{book.notebook_name}</div>
+                    ))}
                   </div>
                 </div>
                 <div className="others-sidebar">
-                    <div className="create-new-nb">+</div>
+                    <div onClick={ShowForm} className="create-new-nb">+</div>
+                    {notebookForm && <NotebookForm handleNotebookRequest={HandleNotebookRequest}  hidefunction={HideForm}/>}
                 </div>
+
             </nav>
         </>
     )

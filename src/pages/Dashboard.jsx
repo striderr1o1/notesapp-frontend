@@ -7,6 +7,12 @@ import "../styles/dashboard.css"
 function Dashboard(){
     const [notebooksList, setNotebooks] = useState([])
     const [username, setUsername] = useState('')
+    const [notebookRequestSent, setNoteBookRequest] = useState(false);
+
+    function HandleNotebookRequest(){
+        setNoteBookRequest(true);
+    }
+
     useEffect(()=>{
         fetch("http://127.0.0.1:8000/getnotebooks", {
             method: "GET",
@@ -22,7 +28,7 @@ function Dashboard(){
         }).catch(err=>{
             console.log("Error: " + err);
         })
-    }, [])
+    }, [notebookRequestSent])
     const routerlinks = [
         {name: "Logout", to: "/logout"}//can add on click
     ]
@@ -30,8 +36,8 @@ function Dashboard(){
         <>
         <Navbar logopath="src/assets/logo.png" aLinks={[]} routerLinks={routerlinks} />
         <div className="main">
-            <Bookshelf books={notebooksList} username={username} className="bookshelf"/>
-            <Sidebar className="sidebar" />
+            <Bookshelf  books={notebooksList} username={username} className="bookshelf"/>
+            <Sidebar books={notebooksList} HandleNotebookRequest={HandleNotebookRequest}  className="sidebar" />
         </div>
         </>
     )

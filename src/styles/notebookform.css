@@ -1,0 +1,29 @@
+.notebook-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    position: static;
+    height: 100px;
+    width: 100%;
+    background-color: grey;
+    transition: 1s ease;
+}
+.notebookname-input{
+    width: 55%;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: transparent;
+}
+.button-1, .button-2{
+    border-radius: 20px;
+}
