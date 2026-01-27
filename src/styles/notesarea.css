@@ -1,0 +1,76 @@
+.notepage-container{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    background-color: grey;
+    height: 100%;
+    border-radius: 30px;
+    margin-top: 10px;
+
+    display: grid;
+    grid-template: 1fr / 15% 85%;
+}
+.secondary-notes-cont{
+    grid-area: 1/1/1/2;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.backbutton{
+    height: 30px;
+    
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        color: white;
+        text-align: center;
+        background-color: transparent;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+    p:hover{
+        background-color: rgb(203, 203, 203);
+        transition: 0.3s ease;
+    }
+}
+.notes-ref-cont{
+    height: 150px;
+    width: 95%;
+    border-radius: 20px;
+    overflow: scroll;
+   
+}
+.notes-list-heading{
+    min-height: 10px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    background-color: rgb(61, 61, 61);
+    
+}
+.render-notes-list{
+    min-height: 150px;
+    width: 100%;
+    
+}
+.note-name{
+    margin: 0;
+    padding-left: 10px;
+    transition: 0.3s ease;
+}
+.note-name:hover{
+    background-color: rgb(195, 195, 195);
+    transition: 0.3s ease;
+}

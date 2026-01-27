@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
 import NotebookForm from "./NotebookForm"
-function Sidebar({HandleNotebookRequest, books}){
+function Sidebar({HandleNotebookRequest, books, setNotesIDfunction, showNotesFunction}){
 
     const [notebookForm, SetnotebookForm] = useState(false);
     const [hoverOnNotebooks, SetHover] = useState(false)
@@ -40,7 +40,13 @@ function Sidebar({HandleNotebookRequest, books}){
                   <div className="nb-heading">Notebooks</div>
                   <div onMouseOver={setNotebookHover} onMouseOut={UnsetNotebookHover} className="notebook-render-div">
                     {hoverOnNotebooks && books.map((book)=>(
-                        <div className="booknames" key={book._id}>{book.notebook_name}</div>
+                        <div className="booknames"  key={book._id} onClick={
+                            ()=>{
+                                showNotesFunction();
+                                setNotesIDfunction(book._id);
+                                
+                            }
+                        }>{book.notebook_name}</div>
                     ))}
                   </div>
                 </div>

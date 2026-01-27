@@ -91,6 +91,9 @@
     overflow-y: scroll;
     
 }
+.booknames{
+    margin: 5px;
+}
 
 .booknames:hover{
     background-color: grey;
@@ -107,6 +110,7 @@ border: 1px solid white;
         display: block;
     }
     .nb-heading{
+        margin-top: 10px;
         display: block;
         background-color: transparent;
         height: auto;
@@ -114,7 +118,7 @@ border: 1px solid white;
         font-size: large;
     }
     .notebooks-div:hover{
-        background-color: rgb(65, 65, 65);
+        background-color: rgb(87, 87, 87);
         transition: 1s ease;
         min-height: 200px;
         
