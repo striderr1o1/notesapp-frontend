@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Editor from "./Editor";
 import "../../styles/notesarea.css"
 function NotesArea({id, showDesktopFunction}){
 
@@ -48,9 +49,10 @@ function NotesArea({id, showDesktopFunction}){
             </div>
              <div className="primary-notes-cont">
                 <div className="writing-div">
-                    <div className="panel"></div>
+                    {/* <div className="panel"></div> */}
                     <div className="writing-pad">
-                       <textarea name="" id="writing-text-area"></textarea>
+                       {/* <textarea name="" id="writing-text-area"></textarea> */}
+                      <Editor />
                     </div>
                 </div>
              </div>

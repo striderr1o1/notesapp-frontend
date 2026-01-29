@@ -106,25 +106,31 @@
 transition: 0.3s ease;
 }
 .writing-div{
+   
     grid-column: 1/2;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.panel{
+/* .panel{
     height: 10%;
     margin: 5px;
     border-radius: 10px;
     border: 1px solid black ;
-}
+} */
 .writing-pad{
-    height: 87%;
+    min-height: 98%;
     overflow-y: scroll;
     border: 1px solid black ;
-    margin: 5px;
-    border-radius: 10px;
+    width: 98%;
+    border-radius: 15px;
 }
-#writing-text-area{
+
+/* #writing-text-area{
     height: 100%;
     width: 100%;
     padding:10px;
     font-size: 15px;
-}
+} */
