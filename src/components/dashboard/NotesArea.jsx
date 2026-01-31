@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Editor from "./Editor";
+
 import "../../styles/notesarea.css"
+import { API_BASE_URL } from "../../constants"
 function NotesArea({id, showDesktopFunction, notebookID}){
 
     //fetch notes
@@ -16,10 +18,10 @@ async function sendNewNoteData(){
         const data = {
             notebook_id: notebookID,
             notename: newNoteName,
-            data: ""
+            data: {}
         }
 
-        let response = await fetch("http://127.0.0.1:8000/createnote", {
+        let response = await fetch(`${API_BASE_URL}/createnote`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -44,7 +46,7 @@ async function sendNewNoteData(){
             "notebook_id": id
         }
         console.log(id)
-        fetch("http://127.0.0.1:8000/getnotes",{
+        fetch(`${API_BASE_URL}/getnotes`,{
             method: "POST",
             credentials: "include",
             headers: {

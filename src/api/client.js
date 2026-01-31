@@ -1,0 +1,26 @@
+import { API_BASE_URL } from "../constants";
+
+export async function ApiRequestGet(endpoint){
+    let response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        credentials: "include"
+    })
+
+    return response;
+}
+
+export async function ApiRequestPost(endpoint, Body){
+    let response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        credentials: "include",
+        body: JSON.stringify(Body)
+    })
+
+    return response;
+}

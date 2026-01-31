@@ -1,5 +1,7 @@
 import "../../styles/notebookform.css"
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../constants"
+
 function NotebookForm({hidefunction, handleNotebookRequest}){
     const [notebookName, setNotebookName] = useState('');
     
@@ -8,7 +10,7 @@ function NotebookForm({hidefunction, handleNotebookRequest}){
             notebookname: notebookName
         }
 
-        fetch("http://127.0.0.1:8000/createnotebook", {
+        fetch(`${API_BASE_URL}/createnotebook`, {
             method: "POST",
             credentials: "include",
             headers:{

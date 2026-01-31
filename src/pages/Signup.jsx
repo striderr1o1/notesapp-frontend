@@ -1,6 +1,8 @@
 import "../styles/signup.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { API_BASE_URL } from "../constants"
+import { ApiRequestPost } from "../api/client"
 function Signup(){
 
     const [username, setUsername] = useState('')
@@ -9,7 +11,7 @@ function Signup(){
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
-async function SendData(e){
+    async function SendData(e){
          e.preventDefault();
 
          if(username === '' || password === '' || email === ''){
@@ -21,15 +23,7 @@ async function SendData(e){
             password: password,
             email: email
         }
-
-        fetch("http://127.0.0.1:8000/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8"
-            },
-            credentials: "include",
-            body: JSON.stringify(data)
-        })
+        ApiRequestPost("signup", data)
         .then((resp)=>
         {
             console.log(resp);

@@ -4,7 +4,9 @@ import Bookshelf from "../components/dashboard/Bookshelf"
 import NotesArea from "../components/dashboard/NotesArea"
 import { useEffect } from "react"
 import { useState } from "react"
+import { ApiRequestGet } from "../api/client"
 import "../styles/dashboard.css"
+
 function Dashboard(){
     const [notebooksList, setNotebooks] = useState([])
     const [username, setUsername] = useState('')
@@ -29,10 +31,9 @@ function Dashboard(){
     }
 
     useEffect(()=>{
-        fetch("http://127.0.0.1:8000/getnotebooks", {
-            method: "GET",
-            credentials: "include"
-        }).then(response=>{
+        
+        ApiRequestGet("getnotebooks")
+        .then(response=>{
             return response.json()
         }).then(data=>{
             console.log(data)
