@@ -52,8 +52,17 @@ function Dashboard(){
         <>
         <Navbar logopath="src/assets/logo.png" aLinks={[]} routerLinks={routerlinks} />
         <div className="main">
-           {showNotes ? <NotesArea showDesktopFunction={HandleNotShowNotes} id={NotebookID} /> : <Bookshelf setNotesIDfunction={HandleNotebookId} showNotesFunction={HandleShowNotes}  books={notebooksList} username={username} className="bookshelf"/> }
-            <Sidebar setNotesIDfunction={HandleNotebookId} showNotesFunction={HandleShowNotes} books={notebooksList} HandleNotebookRequest={HandleNotebookRequest}  className="sidebar" />
+           {showNotes ? <NotesArea showDesktopFunction={HandleNotShowNotes} notebookID={NotebookID}
+           id={NotebookID} /> : <Bookshelf setNotesIDfunction={HandleNotebookId} 
+           showNotesFunction={HandleShowNotes}  books={notebooksList} 
+           username={username} className="bookshelf"/> }
+           
+            <Sidebar 
+            setNotesIDfunction={HandleNotebookId} 
+            showNotesFunction={HandleShowNotes} 
+            books={notebooksList} 
+            HandleNotebookRequest={HandleNotebookRequest}  
+            className="sidebar" />
         </div>
 
         </>

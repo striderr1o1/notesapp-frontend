@@ -2,7 +2,7 @@
     grid-row: 1/2;
     grid-column: 2/3;
     background-color: transparent;
-    height: 100%;
+    min-height: 90vh;
     /* border-radius: 30px; */
     margin-top: 10px;
 
@@ -106,13 +106,14 @@
 transition: 0.3s ease;
 }
 .writing-div{
-   
     grid-column: 1/2;
     background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 95vh;
+    overflow: hidden;
 }
 /* .panel{
     height: 10%;
@@ -121,11 +122,37 @@ transition: 0.3s ease;
     border: 1px solid black ;
 } */
 .writing-pad{
-    min-height: 98%;
-    overflow-y: scroll;
-    border: 1px solid black ;
+    background-color: rgb(209, 209, 209)  ;
+    height: 98%;
+    overflow: hidden;
+    border: 1px solid black;
     width: 98%;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.qoute{
+    background-color: transparent;
+    font-style: italic;
+    font-size: 2.5rem;
+}
+
+/* Quill editor container styles */
+#editor-container {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Critical for flex children to shrink */
+    overflow: hidden;
+}
+
+#editor {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 /* #writing-text-area{
@@ -134,3 +161,35 @@ transition: 0.3s ease;
     padding:10px;
     font-size: 15px;
 } */
+.create-newnote-div{
+    margin-top: 10px;
+    height: 150px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+}
+.newnote-heading{
+    margin: 0;
+    margin-top: 10px;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+}
+.notename-input{
+    margin-top: 10px;
+    width: 80%;
+}
+.newnote-button{
+    margin-top: 20px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+.newnote-button:hover{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    transition: 0.2s ease;
+}
