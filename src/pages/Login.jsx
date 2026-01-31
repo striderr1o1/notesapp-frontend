@@ -1,8 +1,7 @@
 import "../styles/login.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { API_BASE_URL } from "../constants"
-import { ApiRequestPost } from "../api/client"
+import { ApiRequestPost } from "../api/client";
 
 function Login(){
     
@@ -21,14 +20,6 @@ function Login(){
             password: password
         }
 
-        // let response = await fetch(`${API_BASE_URL}/login`,{
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json; charset=UTF-8"
-        //     },
-        //     credentials: "include",
-        //     body: JSON.stringify(data)
-        // })
         let response = await ApiRequestPost("login", data);
         if (!response){
             setError('Error in Logging in');
