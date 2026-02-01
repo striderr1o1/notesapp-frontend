@@ -1,16 +1,16 @@
 import Quill from "quill";
 import { useEffect, useState } from "react";
-
+import { useRef } from "react";
 import { ApiRequestPost } from "../../api/client";
+import { StoreObjectInLocalStorage } from "../../api/notes";
 function Editor({noteid}){
-    // const [showEditor, SetShowEditor] = useState(false);
-
+    
+    const editorContainerRef = useRef(null);
+    const quillRef = useRef(null);
+    const saveTimeoutRef = useRef(null);
     useEffect(()=>{
         
-        const container = document.querySelector('#editor');
-        const quill = new Quill(container, { theme: 'snow'});
-        // SetShowEditor(true);
-
+        quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
         //IIFE
         (async function(){
             const body = {
@@ -21,16 +21,26 @@ function Editor({noteid}){
         let json = await response.json();
         console.log(json);
 
-        quill.setText(json.data);
-        }());
+        quillRef.current.on("text-change", ()=>{
+            const contents = quillRef.current.getContents();
+            StoreObjectInLocalStorage(noteid, contents);
 
-        console.log(quill.getContents());
+            if(saveTimeoutRef.current){
+                clearTimeout(saveTimeoutRef.current);
+            }
 
+            saveTimeoutRef.current = setTimeout(()=>{
+                //savetocloud (update)
+            }, 1000);
+        })
+
+    }());
+    
     }, [])
     return (
         
         <div id="editor-container">
-            <div id="editor"></div>
+            <div ref={editorContainerRef} id="editor"></div>
         </div>
     )
 }
