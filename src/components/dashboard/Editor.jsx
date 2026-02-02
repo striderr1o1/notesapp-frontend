@@ -2,7 +2,7 @@ import Quill from "quill";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { ApiRequestPost } from "../../api/client";
-import { StoreObjectInLocalStorage } from "../../api/notes";
+import { StoreObjectInLocalStorage, SaveNoteToCloud } from "../../api/notes";
 function Editor({noteid}){
     
     const editorContainerRef = useRef(null);
@@ -31,7 +31,12 @@ function Editor({noteid}){
 
             saveTimeoutRef.current = setTimeout(()=>{
                 //savetocloud (update)
-            }, 1000);
+                SaveNoteToCloud(noteid)
+                .then(resp=>{
+                    console.log(resp);
+                })
+                //data is going to the backend, next need to take it and show it to front end
+            }, 2000);
         })
 
     }());
