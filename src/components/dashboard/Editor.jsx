@@ -11,8 +11,8 @@ function Editor({noteid}){
     const quillRef = useRef(null);
     const saveTimeoutRef = useRef(null);
     const onTextChange =  ()=>{
-            const contents = quillRef.current.getContents();
-            StoreObjectInLocalStorage(noteid, contents);
+            const Contents = quillRef.current.getContents();
+            StoreObjectInLocalStorage(noteid, Contents);
 
             if(saveTimeoutRef.current){
                 clearTimeout(saveTimeoutRef.current);
@@ -40,16 +40,15 @@ function Editor({noteid}){
         return data;
     }
     useEffect(()=>{
-
+        
         (async function(){
+            
             let data = await fetchNoteData();
             SetContents(data);
         })();
-        if(contents.length === 0){
-            console.log("returning");
-            return;
-        }
-        quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
+        
+        if(fetchedState === true){
+            quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
         //IIFE
         console.log(contents)
         quillRef.current.setContents(contents); // issue
@@ -69,11 +68,13 @@ function Editor({noteid}){
         return ()=>{
             quillRef.current.off("text-change", onTextChange);
             quillRef.current = null;
+            setFetchedState(false);
         };
 
     }());
+        }
     
-    }, [fetchedState])
+    }, [fetchedState, noteid])
     return (
         
         <div id="editor-container">

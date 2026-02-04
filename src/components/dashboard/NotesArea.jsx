@@ -18,7 +18,7 @@ async function sendNewNoteData(){
         const data = {
             notebook_id: notebookID,
             notename: newNoteName,
-            data: {}
+            data: ""
         }
 
         let response = await fetch(`${API_BASE_URL}/createnote`, {
@@ -77,11 +77,12 @@ async function sendNewNoteData(){
                 <div className="notes-ref-cont">
                     {/* <p className="notes-list-heading">Notes List</p> */}
                     <div className="render-notes-list">
-                      {showIDs && IDarray.map((id)=>
+                      {showIDs && IDarray.map((Id)=>
                         (<p onClick={()=>{
-                            setNoteID(id);
+                            setNoteID(Id);
+                            
                             setShowNote(true);
-                        }} className="note-name" key={id}>{id}</p>)
+                        }} className="note-name" key={Id}>{Id}</p>)
                       )}
                     </div>
                 </div>
