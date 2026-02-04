@@ -3,25 +3,14 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { ApiRequestPost } from "../../api/client";
 import { StoreObjectInLocalStorage, SaveNoteToCloud } from "../../api/notes";
+
 function Editor({noteid}){
-    
+    const [contents, SetContents] = useState([]);
+    const [fetchedState, setFetchedState] = useState(false);
     const editorContainerRef = useRef(null);
     const quillRef = useRef(null);
     const saveTimeoutRef = useRef(null);
-    useEffect(()=>{
-        
-        quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
-        //IIFE
-        (async function(){
-            const body = {
-            note_id: noteid
-            }
-        
-        let response = await ApiRequestPost("getnotefromid", body);
-        let json = await response.json();
-        console.log(json);
-
-        quillRef.current.on("text-change", ()=>{
+    const onTextChange =  ()=>{
             const contents = quillRef.current.getContents();
             StoreObjectInLocalStorage(noteid, contents);
 
@@ -37,11 +26,54 @@ function Editor({noteid}){
                 })
                 //data is going to the backend, next need to take it and show it to front end
             }, 2000);
-        })
+        }
+
+    const fetchNoteData =async ()=>{
+        let body = {
+            "note_id": noteid
+        }
+        let response = await ApiRequestPost("getnotefromid", body);
+        let json = await response.json();
+        let jsonData = json.data;
+        let data = jsonData.ops;
+        setFetchedState(true);
+        return data;
+    }
+    useEffect(()=>{
+
+        (async function(){
+            let data = await fetchNoteData();
+            SetContents(data);
+        })();
+        if(contents.length === 0){
+            console.log("returning");
+            return;
+        }
+        quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
+        //IIFE
+        console.log(contents)
+        quillRef.current.setContents(contents); // issue
+        console.log("Editor effect ran");
+
+        (async function(){
+            const body = {
+            note_id: noteid
+            }
+        
+        let response = await ApiRequestPost("getnotefromid", body);
+        let json = await response.json();
+        // console.log(json);
+
+        quillRef.current.on("text-change",onTextChange);
+
+        return ()=>{
+            quillRef.current.off("text-change", onTextChange);
+            quillRef.current = null;
+        };
 
     }());
     
-    }, [])
+    }, [fetchedState])
     return (
         
         <div id="editor-container">

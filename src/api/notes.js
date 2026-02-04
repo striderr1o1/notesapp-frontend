@@ -28,6 +28,8 @@ export async function SaveNoteToCloud(note_id){
     let response = await GeneralApiReq("replacenote", config);
     return response;
 }
+ 
+
 
 
 //update note
