@@ -1,4 +1,6 @@
 import { GeneralApiReq } from "./client";
+import { ApiRequestPost } from "./client";
+
 export function StoreObjectInLocalStorage(noteid, object){
     localStorage.setItem(noteid, JSON.stringify(object));
 }
@@ -9,6 +11,8 @@ function fetchObjectFromLocalStorage(noteid){
     console.log(contents)
     return contents;
 }
+
+//used in Editor.jsx
 export async function SaveNoteToCloud(note_id){
     let contents = fetchObjectFromLocalStorage(note_id);
 
@@ -28,7 +32,17 @@ export async function SaveNoteToCloud(note_id){
     let response = await GeneralApiReq("replacenote", config);
     return response;
 }
- 
+export const fetchNoteData =async (noteid)=>{
+        let body = {
+            "note_id": noteid
+        }
+        let response = await ApiRequestPost("getnotefromid", body);
+        let json = await response.json();
+        let jsonData = json.data;
+        let data = jsonData.ops;
+        
+        return data;
+    }
 
 
 
