@@ -66,7 +66,7 @@ async function sendNewNoteData(){
         }).catch((err)=>{
             console.log(err);
         })
-    }, [Render])
+    }, [Render, notebookID])
     return (
         <div className="notepage-container">
             <div className="secondary-notes-cont">

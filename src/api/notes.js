@@ -44,6 +44,26 @@ export const fetchNoteData =async (noteid, callback)=>{
         return data;
     }
 
+export function onTextChangeFactory({ noteid, quillRef, saveTimeoutRef }){
+    return () => {
+        const Contents = quillRef.current.getContents();
+        StoreObjectInLocalStorage(noteid, Contents);
+
+        if(saveTimeoutRef.current){
+            clearTimeout(saveTimeoutRef.current);
+        }
+
+        saveTimeoutRef.current = setTimeout(()=>{
+            //savetocloud (update)
+            SaveNoteToCloud(noteid)
+            .then(resp=>{
+                console.log(resp);
+            })
+
+        }, 1000);
+    };
+}
+
 
 
 //update note
