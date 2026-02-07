@@ -37,16 +37,18 @@ function Editor({noteid}){
         if(fetchedState === false){
             (async function(){
                 
-                let data = await fetchNoteData(noteid);
-                setFetchedState(true);
+                let data = await fetchNoteData(noteid, setFetchedState);
+                
                 SetContents(data);
+                console.log(fetchedState)
+                console.log(contents)
             })();
         }
         
         if(fetchedState === true){
             //IIFE
             quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
-            console.log(contents)
+            
             quillRef.current.setContents(contents); // issue
             console.log("Editor effect ran");
     
@@ -61,13 +63,13 @@ function Editor({noteid}){
     
             quillRef.current.on("text-change",onTextChange);
     
-            return ()=>{
-                quillRef.current.off("text-change", onTextChange);
-                quillRef.current = null;
-                setFetchedState(false);
-            };
-    
-    }());
+            return
+            
+        }());
+        
+        quillRef.current.off("text-change", onTextChange);
+        quillRef.current = null;
+        setFetchedState(false);
             }
         
     }, [fetchedState, noteid])

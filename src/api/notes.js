@@ -32,7 +32,7 @@ export async function SaveNoteToCloud(note_id){
     let response = await GeneralApiReq("replacenote", config);
     return response;
 }
-export const fetchNoteData =async (noteid)=>{
+export const fetchNoteData =async (noteid, callback)=>{
         let body = {
             "note_id": noteid
         }
@@ -40,7 +40,7 @@ export const fetchNoteData =async (noteid)=>{
         let json = await response.json();
         let jsonData = json.data;
         let data = jsonData.ops;
-        
+        callback(true);
         return data;
     }
 
