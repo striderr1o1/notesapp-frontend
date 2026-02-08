@@ -5,7 +5,7 @@ import { ApiRequestPost } from "../../api/client";
 import { fetchNoteData, onTextChangeFactory } from "../../api/notes";
 
 
-function Editor({noteid}){
+function Editor({noteid, currentNoteHandler}){
     
     const [fetchedState, setFetchedState] = useState(false);
     const editorContainerRef = useRef(null);
@@ -27,8 +27,9 @@ function Editor({noteid}){
     useEffect(()=>{
         if(fetchedState === true){
         (async function(){
-            let data = await fetchNoteData(noteid, setFetchedState);
-            quillRef.current.setContents(data);
+            let json = await fetchNoteData(noteid, setFetchedState);
+            quillRef.current.setContents(json.data);
+            currentNoteHandler(json.notename);
             console.log("calling")
             setFetchedState(false);
         })();

@@ -43,6 +43,7 @@ function Dashboard(){
             setNotebooks(data.notebooks_list)
         }).catch(err=>{
             console.log("Error: " + err);
+            
         })
     }, [notebookRequestSent])
 

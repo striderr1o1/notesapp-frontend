@@ -13,6 +13,11 @@ function NotesArea({id, showDesktopFunction, notebookID}){
     const [showNote, setShowNote] = useState(false);
     const [newNoteName, setNewNote] = useState("");
     const [Render, increaseRender] = useState(0);
+    const [currentNote, setCurrentNote] = useState("");
+
+function currentNoteHandler(notename){
+    setCurrentNote(notename);
+}
 
 async function sendNewNoteData(){
         const data = {
@@ -81,6 +86,7 @@ async function sendNewNoteData(){
                         (<p onClick={()=>{
                             setNoteID(Id);
                             
+                            
                             setShowNote(true);
                         }} className="note-name" key={Id}>{Id}</p>)
                       )}
@@ -95,6 +101,9 @@ async function sendNewNoteData(){
                      type="text" placeholder="note name" name="notename" className="notename-input" />
                     <button onClick={sendNewNoteData} className="newnote-button" type="button">Insert</button>
                 </div>
+                <div className="current-note-bar">
+                    <p className="current-note-text">{currentNote ? currentNote : "Select a note"}</p>
+                </div>
 
             </div>
              <div className="primary-notes-cont">
@@ -103,7 +112,7 @@ async function sendNewNoteData(){
                     <div className="writing-pad">
                        {/* <textarea name="" id="writing-text-area"></textarea> */}
                       {/* <Editor /> */}
-                      {showNote ? <Editor noteid={NoteID} /> : <p className="qoute">"Organizing is part of success"</p> }
+                      {showNote ? <Editor noteid={NoteID} currentNoteHandler={currentNoteHandler} /> : <p className="qoute">"Organizing is part of success"</p> }
                     </div>
                 </div>
 

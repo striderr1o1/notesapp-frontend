@@ -38,10 +38,12 @@ export const fetchNoteData =async (noteid, callback)=>{
         }
         let response = await ApiRequestPost("getnotefromid", body);
         let json = await response.json();
+        console.log(json);
+        let notename = json.notename;
         let jsonData = json.data;
         let data = jsonData.ops;
         callback(true);
-        return data;
+        return {"data": data, "notename": notename}
     }
 
 export function onTextChangeFactory({ noteid, quillRef, saveTimeoutRef }){
