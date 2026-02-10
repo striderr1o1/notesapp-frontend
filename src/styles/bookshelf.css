@@ -25,6 +25,8 @@
     justify-content: flex-start;
     font-family: sans-serif;
     border: 2px solid black;
+    background-position: center;
+    background-size: cover;
     
 } 
 .notebooks-shelf:hover{

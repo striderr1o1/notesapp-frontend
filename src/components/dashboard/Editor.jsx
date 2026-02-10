@@ -6,7 +6,7 @@ import { fetchNoteData, onTextChangeFactory } from "../../api/notes";
 
 
 function Editor({noteid, currentNoteHandler}){
-    
+
     const [fetchedState, setFetchedState] = useState(false);
     const editorContainerRef = useRef(null);
     const quillRef = useRef(null);
@@ -15,33 +15,33 @@ function Editor({noteid, currentNoteHandler}){
 
     //useEffect for quill setup
     useEffect(()=>{
-        if(!quillRef.current){
-            quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
-        }
+	if(!quillRef.current){
+	    quillRef.current = new Quill(editorContainerRef.current, { theme: 'snow'});
+	}
 
-        quillRef.current.on("text-change",onTextChange);
-        setFetchedState(true);
+	quillRef.current.on("text-change",onTextChange);
+	setFetchedState(true);
 
     }, [noteid])
 
     useEffect(()=>{
-        if(fetchedState === true){
-        (async function(){
-            let json = await fetchNoteData(noteid, setFetchedState);
-            quillRef.current.setContents(json.data);
-            currentNoteHandler(json.notename);
-            console.log("calling")
-            setFetchedState(false);
-        })();
-        }
+	if(fetchedState === true){
+	    (async function(){
+		let json = await fetchNoteData(noteid, setFetchedState);
+		quillRef.current.setContents(json.data);
+		currentNoteHandler(json.notename);
+		console.log("calling")
+		setFetchedState(false);
+	    })();
+	}
     }, [fetchedState])
-    
-    
+
+
     return (
-        
-        <div id="editor-container">
-            <div ref={editorContainerRef} id="editor"></div>
-        </div>
+
+	<div id="editor-container">
+	    <div ref={editorContainerRef} id="editor"></div>
+	</div>
     )
 }
 
