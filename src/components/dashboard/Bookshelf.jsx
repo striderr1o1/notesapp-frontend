@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 function Bookshelf({books = [], username, showNotesFunction, setNotesIDfunction}){
 	const [showOptions, SetShowOptions] = useState(false);
 	const [image, setImage] = useState("");
-	const inputRef = useRef(null);
+    const inputRef = useRef(null);
 	const shelfRef = useRef(null)
 
 	useEffect(() => {
