@@ -28,7 +28,9 @@
     background-position: center;
     background-size: cover;
     
-} 
+}
+
+ 
 .notebooks-shelf:hover{
     border: 4px solid black;
     transition: 0.3 ease;

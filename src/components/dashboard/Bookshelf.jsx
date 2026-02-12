@@ -5,7 +5,7 @@ function Bookshelf({books = [], username, showNotesFunction, setNotesIDfunction}
 	const [image, setImage] = useState("");
     const inputRef = useRef(null);
 	const shelfRef = useRef(null)
-
+    const [activeID, setActiveID] = useState('');
 	useEffect(() => {
 		//const savedBackground = localStorage.getItem('bookshelf-background');
 		//if (savedBackground && shelfRef.current) {
@@ -38,19 +38,23 @@ function Bookshelf({books = [], username, showNotesFunction, setNotesIDfunction}
 				<div className="notebooks-space">
 					{books.map((book)=>(
 						<div key={book._id} onClick={()=>{
+							
 							showNotesFunction();
 							setNotesIDfunction(book._id);
 						}}  className="notebook">
 							<div className="notebook-div notebook-div-upper" onMouseLeave={()=>{
 								SetShowOptions(false);
+								setActiveID("");
 							}}>
 								<div className="button-div">
 									<button onMouseOver={()=>{
+										setActiveID(book._id); //user enters div, set that book id as active ID, if it checks 
+										// active ID against another books id, it becomes false
 										SetShowOptions(true);
 									}}
 										className="options-button" type="button">...</button>
 								</div>
-								{showOptions && <div className="options-div">
+								{activeID == book._id && <div className="options-div">
 									<button className="delete-book-button" type="button">delete</button>
 								</div>}
 							</div>

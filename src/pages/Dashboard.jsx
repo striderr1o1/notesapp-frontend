@@ -29,18 +29,20 @@ function Dashboard(){
     function HandleNotebookRequest(){
         setNoteBookRequest(true);
     }
-
+    function removeNulls(arr) {
+        return arr.filter(item => item !== null);//AI wrote this function because the backend was throwing null objects
+    }
     useEffect(()=>{
         
         ApiRequestGet("getnotebooks")
         .then(response=>{
             return response.json()
         }).then(data=>{
-            console.log(data)
             
             let username = data.username;
             setUsername(username);
-            setNotebooks(data.notebooks_list)
+            let notebooks_list = removeNulls(data.notebooks_list) 
+            setNotebooks(notebooks_list)
         }).catch(err=>{
             console.log("Error: " + err);
             
