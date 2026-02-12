@@ -7,11 +7,11 @@ function Bookshelf({books = [], username, showNotesFunction, setNotesIDfunction}
 	const shelfRef = useRef(null)
 
 	useEffect(() => {
-		const savedBackground = localStorage.getItem('bookshelf-background');
-		if (savedBackground && shelfRef.current) {
-			shelfRef.current.style.backgroundImage = `url("${savedBackground}")`;
-			
-		}
+		//const savedBackground = localStorage.getItem('bookshelf-background');
+		//if (savedBackground && shelfRef.current) {
+		//	shelfRef.current.style.backgroundImage = `url("${savedBackground}")`;
+		//	
+		//}
 	}, []);
 
 	const handleBackgroundInput = (e)=>{
@@ -21,7 +21,7 @@ function Bookshelf({books = [], username, showNotesFunction, setNotesIDfunction}
 			// Use createObjectURL for immediate display as requested
 			let url = URL.createObjectURL(img)
 			shelfRef.current.style.backgroundImage = `url("${url}")`
-			localStorage.setItem('bookshelf-background', url);
+			//localStorage.setItem('bookshelf-background', url);
 		}
 	}
 	return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Editor from "./Editor";
-
+import { ApiRequestPost } from "../../api/client";
 import "../../styles/notesarea.css"
 import { API_BASE_URL } from "../../constants"
 function NotesArea({id, showDesktopFunction, notebookID}){
@@ -46,6 +46,18 @@ async function sendNewNoteData(){
         increaseRender(Render+1);
     }
 
+async function deleteNote(){
+        const data = {
+        note_id: NoteID,
+        notebook_id: notebookID
+        }
+        console.log(data);
+        let response = await ApiRequestPost("deletenote", data); 
+        console.log(response);
+        increaseRender(Render+1) 
+       setCurrentNote("Select a note")
+}
+
     useEffect(()=>{
         const data = {
             "notebook_id": id
@@ -76,9 +88,9 @@ async function sendNewNoteData(){
         <div className="notepage-container">
             <div className="secondary-notes-cont">
 
-                <div onClick={()=>{
+                <div className="backbutton"><p onClick={()=>{
                     showDesktopFunction();
-                }} className="backbutton"><p>Back</p></div>
+                }} >Back</p><p onClick={deleteNote}>Delete Note</p></div>
                 <div className="notes-ref-cont">
                     {/* <p className="notes-list-heading">Notes List</p> */}
                     <div className="render-notes-list">
@@ -120,4 +132,5 @@ async function sendNewNoteData(){
         </div>
     )
 }
+
 export default NotesArea;
