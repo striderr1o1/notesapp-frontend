@@ -3,18 +3,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    
+    border-radius: 0;
+    color: white;
     position: static;
     height: 100px;
     width: 100%;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
     transition: 1s ease;
 }
 .notebookname-input{
     width: 55%;
     margin-bottom: 10px;
-    border-radius: 20px;
+    border: none;
+    /* border-radius: 20px; */
+    transition: 0.3s ease;
+}
+.notebookname-input:hover{
+    transition: 0.1s ease;
+    border: 2px solid grey;
 }
 .buttons-container{
     display: flex;
@@ -26,4 +32,6 @@
 }
 .button-1, .button-2{
     border-radius: 20px;
+    border: none;
+    margin: 5px;
 }
