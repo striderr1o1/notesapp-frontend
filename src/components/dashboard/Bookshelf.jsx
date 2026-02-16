@@ -1,6 +1,8 @@
 import "../../styles/bookshelf.css";
 import { ApiRequestPost } from "../../api/client";
 import { useState, useRef, useEffect } from "react";
+import Dino from "./Dino";
+
 function Bookshelf({
   books = [],
   username,
@@ -122,6 +124,9 @@ function Bookshelf({
             </div>
           ))}
         </div>
+      </div>
+      <div className="dino">
+        <Dino/>
       </div>
     </div>
   );
