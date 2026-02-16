@@ -34,9 +34,12 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    background-color: transparent;
 }
 
 .text-section h2 {
+
+    background-color: transparent;
     font-family: 'Inter', sans-serif;
     font-size: 1.5rem; /* Smaller font on mobile */
     font-weight: 700;
@@ -46,6 +49,8 @@
 }
 
 .text-section p {
+
+    background-color: transparent;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem; /* Smaller text on mobile */
     color: #636e72;

@@ -74,6 +74,8 @@ function Bookshelf({
               }}
               className="notebook"
             >
+            <div className="notebook-left-div"></div>  
+            <div className="notebook-right-div">
               <div
                 className="notebook-div notebook-div-upper"
                 onMouseLeave={() => {
@@ -116,6 +118,7 @@ function Bookshelf({
                 <p className="notebook-name">{book.notebook_name}</p>
               </div>
               <div className="notebook-div"></div>
+            </div>
             </div>
           ))}
         </div>
