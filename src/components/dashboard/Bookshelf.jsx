@@ -2,7 +2,6 @@ import "../../styles/bookshelf.css";
 import { ApiRequestPost } from "../../api/client";
 import { useState, useRef, useEffect } from "react";
 import Dino from "./Dino";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 function Bookshelf({
   books = [],
@@ -16,14 +15,13 @@ function Bookshelf({
   const shelfRef = useRef(null);
   const [activeID, setActiveID] = useState("");
   const [isDeleteActive, SetDeleteActive] = useState(false);
-  const [showDinoGame, SetShowDinoGame] = useState(false);
+
   useEffect(() => {
     //const savedBackground = localStorage.getItem('bookshelf-background');
     //if (savedBackground && shelfRef.current) {
     //	shelfRef.current.style.backgroundImage = `url("${savedBackground}")`;
     //
     //}
-    SetShowDinoGame(true);
   }, []);
 
   const handleBackgroundInput = () => {
@@ -74,7 +72,6 @@ function Bookshelf({
                 if (isDeleteActive != true) {
                   showNotesFunction();
                   setNotesIDfunction(book._id);
-                  SetShowDinoGame(false);
                 }
               }}
               className="notebook"
@@ -129,7 +126,7 @@ function Bookshelf({
         </div>
       </div>
       <div className="dino">
-       {showDinoGame && <Dino/>} 
+        <Dino/>
       </div>
     </div>
   );

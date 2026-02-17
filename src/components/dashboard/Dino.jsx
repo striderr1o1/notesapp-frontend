@@ -1,34 +1,25 @@
 import ChromeDinoGame from "react-chrome-dino";
 import "../../styles/dino.css";
 import { useEffect } from "react";
-import { getApChorhdo } from "../../assets/soundStrings/sound";
+import {getApChorhdo} from "../../assets/soundStrings/sound";
 import getSoundString from "../../assets/soundStrings/sound";
 function Dino() {
     useEffect(() => {
         let audioComponents = document.querySelectorAll("audio")
         let string = getSoundString();
-        for (let i = 0; i < audioComponents.length; i++) {
-            //changing source of audio components
+        for(let i = 0; i < audioComponents.length; i++){
             audioComponents[i].src = `data:audio/mpeg;base64,${string}`
         }
         const hit = document.getElementById("offline-sound-hit");
 
-        if (hit) {
+        if(hit){
             let str = getApChorhdo()
             hit.src = `data:audio/mpeg;base64,${str}`
 
         }
-
-        return () => {
-            
-            for (let i = 0; i < audioComponents.length; i++) {
-                 audioComponents[i].remove()
-                 console.log("removing audio")
-            }
-        }
     }, [])
     return (
-        <ChromeDinoGame className="dino-game" />
+        <ChromeDinoGame />
     )
 }
 
