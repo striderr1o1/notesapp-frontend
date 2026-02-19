@@ -102,17 +102,17 @@ function NotesArea({ id, showDesktopFunction, notebookID }) {
           {/* <p className="notes-list-heading">Notes List</p> */}
           <div className="render-notes-list">
             {showIDs &&
-              IDarray.map((Id) => (
+              IDarray.map((noteObj) => (
                 <p
                   onClick={() => {
-                    setNoteID(Id);
+                    setNoteID(noteObj._id);
 
                     setShowNote(true);
                   }}
                   className="note-name"
-                  key={Id}
+                  key={noteObj._id}
                 >
-                  {Id}
+                  {noteObj.notename}
                 </p>
               ))}
           </div>

@@ -29,3 +29,15 @@ export async function GeneralApiReq(endpoint, config){
     let response = await fetch(`${API_BASE_URL}/${endpoint}`, config);
     return response;
 }
+
+export const handleBackgroundInput = () => {
+    let img = inputRef.current.files[0];
+    if (img) {
+      // Use createObjectURL for immediate display as requested
+      let url = URL.createObjectURL(img);
+      shelfRef.current.style.backgroundImage = `url("${url}")`;
+      //localStorage.setItem('bookshelf-background', url);
+    }
+  };
+
+

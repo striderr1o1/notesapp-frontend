@@ -46,6 +46,7 @@ function Bookshelf({
     console.log("notebook delete req resp: " + response);
     renderFunction();
   };
+
   return (
     <div className="bookshelf">
       <div ref={shelfRef} className="notebooks-shelf">

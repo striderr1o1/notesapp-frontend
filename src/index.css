@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'bulgatti';
+    src: url('./assets/font/Bulgatti-xgMV.ttf') format('truetype');
+   
+}
+
 *{
     background-color: rgb(255, 255, 255);
 }

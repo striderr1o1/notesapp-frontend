@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import Navbar from './components/Navbar.jsx';
 import './App.css'
 import AppRoutes from "./routes/AppRoutes.jsx";
 import { useLocation } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
   const location = useLocation();
 
   const links = [
