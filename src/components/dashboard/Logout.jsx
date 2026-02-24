@@ -2,7 +2,9 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../../constants"
 import { ApiRequestGet } from "../../api/client";
- function Logout(){
+import logger from "../../utils/logger.js"
+
+function Logout(){
     
     const navigate = useNavigate()
     useEffect( ()=>{
@@ -10,7 +12,7 @@ import { ApiRequestGet } from "../../api/client";
                 
                 ApiRequestGet("logout")
                 .then((response)=>{
-                    console.log(response)
+                    logger.info("", response); 
                     if(response.status == 200){
                         navigate("/")
                         return

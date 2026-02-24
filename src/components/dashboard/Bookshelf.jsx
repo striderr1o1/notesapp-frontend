@@ -2,6 +2,7 @@ import "../../styles/bookshelf.css";
 import { ApiRequestPost } from "../../api/client";
 import { useState, useRef, useEffect } from "react";
 import Dino from "./Dino";
+import logger from "../../utils/logger.js"
 
 function Bookshelf({
   books = [],
@@ -41,9 +42,10 @@ function Bookshelf({
 
     let response = await ApiRequestPost("deletenotebook", data);
     if (response.status != 200) {
-      console.log("Error in deleting notebook");
+      logger.error("Error in deleting notebook")
     }
     console.log("notebook delete req resp: " + response);
+    logger.info("", response)
     renderFunction();
   };
 

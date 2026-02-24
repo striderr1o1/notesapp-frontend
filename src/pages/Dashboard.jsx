@@ -1,3 +1,4 @@
+import logger from "../utils/logger.js"
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/dashboard/Sidebar";
 import Bookshelf from "../components/dashboard/Bookshelf";
@@ -27,7 +28,6 @@ function Dashboard() {
 
   function HandleNotebookId(id) {
     SetNotebookID(id);
-    console.log(id);
   }
 
   function HandleNotebookRequest() {
@@ -48,7 +48,7 @@ function Dashboard() {
         setNotebooks(notebooks_list);
       })
       .catch((err) => {
-        console.log("Error: " + err);
+        logger.error(err)
       });
   }, [notebookRequestSent, render]);
 

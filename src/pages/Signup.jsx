@@ -2,6 +2,7 @@ import "../styles/signup.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ApiRequestPost } from "../api/client"
+import logger from "../utils/logger.js"
 function Signup(){
 
     const [username, setUsername] = useState('')
@@ -25,9 +26,10 @@ function Signup(){
         ApiRequestPost("signup", data)
         .then((resp)=>
         {
-            console.log(resp);
+            logger.info("", resp) 
             if(resp["status"] != 200){
                 setError('Error');
+                logger.error('signup Failed');
                 alert("Account not made")
                 return;
             }
@@ -39,6 +41,7 @@ function Signup(){
         ).catch(err=>{
             console.log(err)
             setError("Error")
+            logger.error(err)
         })
 
         

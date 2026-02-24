@@ -20,7 +20,7 @@ function Navbar({logopath, aLinks = [], routerLinks = []}){
 		<div className="authlinks">
 			{
 			routerLinks.map((link)=>(
-				<Link key={link.name} className="links" to={link.to}>{link.name}</Link>
+                <Link key={link.name} className="links" to={link.to}>{link.name}</Link>
 			))
 			}
 			

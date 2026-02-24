@@ -2,7 +2,7 @@ import "../styles/login.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ApiRequestPost } from "../api/client";
-
+import logger from "../utils/logger.js"
 function Login(){
     
     const [username, setUsername] = useState('');
@@ -13,8 +13,6 @@ function Login(){
     //write function
     async function SendData(e){
         e.preventDefault()
-        console.log(username)
-        console.log(password)
         let data = {
             username: username,
             password: password
@@ -23,15 +21,17 @@ function Login(){
         let response = await ApiRequestPost("login", data);
         if (!response){
             setError('Error in Logging in');
+            logger.error('Login Failed');
             return;
         }
         if(response.status == 200){
             alert("Logged in")
-	    console.log(response);
+            logger.info('Login successful', {});
             navigate('/dashboard')
         }
         if(response.status == 401 || response.status != 200){
             setError('Error in Logging in');
+            logger.error('Login Failed');
             return;
         }
 

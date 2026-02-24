@@ -1,6 +1,7 @@
 import "../../styles/notebookform.css";
 import { useState } from "react";
 import { API_BASE_URL } from "../../constants";
+import logger from "../../utils/logger.js" 
 //hi i am good
 
 function NotebookForm({ hidefunction, handleNotebookRequest }) {
@@ -20,12 +21,11 @@ function NotebookForm({ hidefunction, handleNotebookRequest }) {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        console.log(response);
-        console.log(response.status);
+        logger.info("", response)
         handleNotebookRequest();
       })
       .catch((err) => {
-        console.log("Error: " + err);
+       logger.error(err) 
       });
   }
 
