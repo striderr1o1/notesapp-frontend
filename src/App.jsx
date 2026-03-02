@@ -17,7 +17,7 @@ function App() {
     { name: "Login", to: "/login"}
   ]
 
-  const logoPath = "src/assets/logo.png"
+  const logoPath = "/logo.png"
   
   return(
 	  <>

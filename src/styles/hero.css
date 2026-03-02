@@ -19,7 +19,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('src/assets/rocketpaper.png');
+    background-image: url('/rocketpaper.png');
     background-position: center;
     background-size: cover;
     filter: blur(10px);

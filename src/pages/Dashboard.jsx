@@ -58,7 +58,7 @@ function Dashboard() {
   return (
     <>
       <Navbar
-        logopath="src/assets/logo.png"
+        logopath="/logo.png"
         aLinks={[]}
         routerLinks={routerlinks}
       />

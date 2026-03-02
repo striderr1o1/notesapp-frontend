@@ -3,7 +3,7 @@ import { ApiRequestPost } from "../../api/client";
 import { useState, useRef, useEffect } from "react";
 import Dino from "./Dino";
 import logger from "../../utils/logger.js"
-
+//import BasicDateCalendar from "./Calendar.jsx";
 function Bookshelf({
   books = [],
   username,
@@ -130,6 +130,10 @@ function Bookshelf({
       </div>
       <div className="dino">
         <Dino/>
+      </div>
+      <textarea className="sticky-notes-div">
+      </textarea >
+      <div className="calendar-div">
       </div>
     </div>
   );
