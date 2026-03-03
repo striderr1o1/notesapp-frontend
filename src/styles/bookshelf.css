@@ -213,14 +213,152 @@
     margin: 0 10px 0 10px;
     border-radius: 20px;
 }
-.sticky-notes-div{
-    grid-row:1/2;
+/* Wrapper takes the grid cell; gives the sticky note its card look */
+.sticky-note-wrapper {
+    grid-row: 1/2;
     grid-column: 2/3;
     margin: 10px 0 10px 0;
     border-radius: 20px;
-    text-decoration: none;
-    padding:20px;
-    font-size: 15px;
     background-color: rgb(255, 250, 118);
-    border-style: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 6px 18px rgba(0,0,0,0.45);
+    overflow: hidden;
+}
+.sticky-notes-heading{
+    background-color: transparent;
+}
+
+/* Coloured top bar with the "Notes" label */
+.sticky-note-header {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    background-color: rgb(240, 230, 80);
+    padding: 6px 14px;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(80, 70, 0);
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.sticky-note-icon {
+    font-size: 0.75rem;
+    background-color: transparent;
+}
+
+/* Textarea fills the rest of the wrapper */
+.sticky-notes-div {
+    flex: 1;
+    resize: none;
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    background-color: transparent;
+    color: rgb(50, 40, 0);
+    /* ruled-line effect via repeating gradient */
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        rgba(0,0,0,0.08) 28px
+    );
+    background-size: 100% 28px;
+    line-height: 28px;
+}
+
+/* ── Calendar div (bottom-right cell) ───────────────────────────────────── */
+.calendar-div {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    margin: 0 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(45, 45, 45);
+    border-radius: 20px;
+    border: 4px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: white;
+}
+
+.calendar-header {
+    color: white;
+    background-color:rgb(45, 45, 45);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.cal-title {
+    background-color: transparent;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.cal-nav-btn {
+    width: 50px;
+    color: white; 
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.cal-nav-btn:hover {
+    color: rgb(180, 180, 180);
+    background-color: black;
+}
+
+/* 7-column grid shared by labels and day cells */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    flex: 1;
+}
+
+.cal-day-label {
+    text-align: center;
+    font-size: 0.6rem;
+    color: rgb(160, 160, 160);
+    padding: 2px 0;
+}
+
+.cal-day-cell {
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 2px 0;
+    border-radius: 50%;
+    cursor: default;
+    color: grey;
+}
+
+.cal-day-empty {
+    /* placeholder for days before the 1st */
+}
+
+.cal-day-today {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 50%;
 }

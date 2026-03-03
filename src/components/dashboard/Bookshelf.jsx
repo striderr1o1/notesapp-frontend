@@ -3,7 +3,9 @@ import { ApiRequestPost } from "../../api/client";
 import { useState, useRef, useEffect } from "react";
 import Dino from "./Dino";
 import logger from "../../utils/logger.js"
-//import BasicDateCalendar from "./Calendar.jsx";
+import Calendar from "./Calendar.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 function Bookshelf({
   books = [],
   username,
@@ -131,9 +133,20 @@ function Bookshelf({
       <div className="dino">
         <Dino/>
       </div>
-      <textarea className="sticky-notes-div">
-      </textarea >
+      {/* Sticky note: wrapper holds grid position; header + textarea inside */}
+      <div className="sticky-note-wrapper">
+        <div className="sticky-note-header">
+          <FontAwesomeIcon icon={faPencil} className="sticky-note-icon" />
+          <span className="sticky-notes-heading">Notes</span>
+        </div>
+        <textarea
+          className="sticky-notes-div"
+          placeholder="jot something down..."
+          spellCheck={false}
+        />
+      </div>
       <div className="calendar-div">
+        <Calendar />
       </div>
     </div>
   );

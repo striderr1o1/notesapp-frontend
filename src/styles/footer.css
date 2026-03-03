@@ -1,0 +1,47 @@
+footer {
+    background-color: black;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 50px 0 50px 0;
+    
+}
+
+.footer-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background-color: transparent;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    border: 1px solid black;
+}
+
+.footer-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: white;
+    background-color: transparent;
+}
