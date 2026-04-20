@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar.jsx';
+import Chatbot from './components/Chatbot.jsx';
 import './App.css'
 import AppRoutes from "./routes/AppRoutes.jsx";
-import './styles/hero.css';
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -24,10 +24,8 @@ function App() {
 	  <>
        {location.pathname !== '/dashboard' && <Navbar logopath={logoPath} aLinks={links} routerLinks={RouterLinks}/>}
        <AppRoutes />
-       {/* Persistent chatbot button — fixed to bottom-right on all pages */}
-       <div className="chatbot-div">
-         <button className="chatbot-button">Chatbot</button>
-       </div>
+       {/* Persistent chatbot — fixed to bottom-right on all pages */}
+       <Chatbot />
 	  </>
  )
 }
