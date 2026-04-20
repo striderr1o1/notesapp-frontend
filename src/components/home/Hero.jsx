@@ -16,7 +16,7 @@ function Hero(){
                 <p>Transform scattered notes into a masterpiece of organization.</p>
             </div>
         </div>
-        </>
+                </>
     )
 }
 
