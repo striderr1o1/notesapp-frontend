@@ -24,6 +24,18 @@ export async function ApiRequestPost(endpoint, Body){
 
     return response;
 }
+export async function ApiRequestPostGeneral(url, endpoint, Body){
+    let response = await fetch(`${url}/${endpoint}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        credentials: "include",
+        body: JSON.stringify(Body)
+    })
+
+    return response;
+}
 
 export async function GeneralApiReq(endpoint, config){
     let response = await fetch(`${API_BASE_URL}/${endpoint}`, config);
