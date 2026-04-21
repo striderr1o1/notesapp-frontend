@@ -1,6 +1,7 @@
 import { useState, Fragment } from "react";
 import "../styles/chatbot.css";
 import { ApiRequestPostGeneral } from "../api/client";
+import { CHATBOT_ENDPOINT, CHATBOT_URL } from "../constants";
 function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
     //    const [userMessages, setUserMessages] = useState([]);
@@ -14,7 +15,7 @@ function Chatbot() {
         let body = {
             userSentMessage: input
         }
-        ApiRequestPostGeneral("http://127.0.0.1:8000", "webhook", body)
+        ApiRequestPostGeneral(CHATBOT_URL, CHATBOT_ENDPOINT, body)
             .then((response) => {
                 return response.json()
             }).then(json => {
