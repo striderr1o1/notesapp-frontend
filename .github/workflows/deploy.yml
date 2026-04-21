@@ -1,0 +1,35 @@
+name: NotesApp Frontend
+on: 
+  push:
+    branches: 
+      - github-pages
+
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'  # caches node_modules for faster runs
+
+      - name: Install dependencies
+        run: npm ci  # use ci instead of install (faster, strict)
+
+      - name: Build 
+        run: npm run build 
+        env:
+          CI: false 
+
+      - name: Deploy to github-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
