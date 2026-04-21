@@ -9,7 +9,7 @@ function Chatbot() {
     const [chatpairs, setChatPairs] = useState([]);
     const [input, setInput] = useState("");
     const [ai_response, set_ai_response] = useState(false)
-
+//wow
     const handleSend = () => {
         if (!input.trim()) return;
         let body = {
