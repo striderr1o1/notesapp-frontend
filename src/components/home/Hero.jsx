@@ -9,7 +9,7 @@ function Hero(){
                 <p>Before they fly away into the abyss of forgotten ideas.</p>
             </div>
             <div className="hero-content image-section">
-                <img src="/rocketpaper.png" alt="Rocket Paper" />
+                <img src={import.meta.env.BASE_URL + "/rocketpaper.png"} alt="Rocket Paper" />
             </div>
             <div className="hero-content text-section">
                 <h2>Structure Your Chaos</h2>
