@@ -8,9 +8,9 @@ function App() {
   const location = useLocation();
 
   const links = [
-    { name: "Home", href: "/"},
-    { name: "About", href: "/"},
-    { name: "Contact Us", href: "/"},
+    { name: "Home", href: "/#home"},
+    { name: "About", href: "/#about"},
+    { name: "Contact Us", href: "/#contact"},
   ]
 
   const RouterLinks = [

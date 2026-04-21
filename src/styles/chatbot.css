@@ -14,10 +14,7 @@
 .chatbot-panel {
     width: 300px;
     height: 400px;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    /* Safari support */
+    background-color: white;
     border: 1px solid black;
     border-radius: 10px;
     margin-bottom: 10px;

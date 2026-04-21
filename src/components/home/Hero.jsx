@@ -3,7 +3,7 @@ import "../../styles/hero.css"
 function Hero(){
     return(
         <>
-        <div className="herosection">
+        <div id="home" className="herosection">
             <div className="hero-content text-section first">
                 <h2>Capture Your Thoughts</h2>
                 <p>Before they fly away into the abyss of forgotten ideas.</p>
