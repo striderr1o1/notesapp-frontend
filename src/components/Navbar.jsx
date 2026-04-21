@@ -7,7 +7,7 @@ function Navbar({logopath, aLinks = [], routerLinks = []}){
        <header>
 		<nav id="navbar">
 		<div className="logo-div">
-			<img src={logopath} alt="" />
+			<img src={import.meta.env.BASE_URL + logopath} alt="" />
 		</div>
 		<div className="links-div">
 			{
